@@ -1,0 +1,12 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.swiftpm/
+.build/
+
