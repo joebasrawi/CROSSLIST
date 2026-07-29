@@ -15,4 +15,3 @@ let package = Package(
         .testTarget(name: "CROSSLISTCoreTests", dependencies: ["CROSSLISTCore"]),
     ]
 )
-

@@ -78,4 +78,3 @@ async def spotify_to_apple_preview(
         spotify=spotify,
         apple_music=apple_music,
     )
-

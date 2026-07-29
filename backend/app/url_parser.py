@@ -39,4 +39,3 @@ def spotify_playlist_id(value: str) -> str:
             message="This Spotify playlist link has an invalid identifier.",
         )
     return candidate
-

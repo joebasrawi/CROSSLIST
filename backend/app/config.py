@@ -25,4 +25,3 @@ class Settings:
     @property
     def apple_music_configured(self) -> bool:
         return bool(self.apple_music_developer_token)
-

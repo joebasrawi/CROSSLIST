@@ -84,4 +84,3 @@ final class TransferViewModel: ObservableObject {
         phase = .idle
     }
 }
-

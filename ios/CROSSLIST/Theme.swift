@@ -21,4 +21,3 @@ struct CROSSLISTButtonStyle: ButtonStyle {
             .animation(.easeOut(duration: 0.14), value: configuration.isPressed)
     }
 }
-

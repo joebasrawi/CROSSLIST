@@ -128,4 +128,3 @@ async def _enumerate_async(iterator):
     async for item in iterator:
         yield position, item
         position += 1
-

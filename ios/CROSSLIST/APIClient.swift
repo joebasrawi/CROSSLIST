@@ -61,4 +61,3 @@ struct APIClient: Sendable {
         return try decoder.decode(TransferPreview.self, from: data)
     }
 }
-
