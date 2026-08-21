@@ -1,5 +1,7 @@
 # CROSSLIST
 
+[![CI](https://github.com/joebasrawi/CROSSLIST/actions/workflows/ci.yml/badge.svg)](https://github.com/joebasrawi/CROSSLIST/actions/workflows/ci.yml)
+
 ![CROSSLIST app icon](brand/AppIcon.svg)
 
 CROSSLIST turns a public Spotify playlist into a playlist in Apple Music without asking the listener to type an Apple ID or password. The iPhone app asks for Apple's standard Music permission once, creates playlists locally through MusicKit, and opens the result in Apple Music.
