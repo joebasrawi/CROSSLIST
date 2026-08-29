@@ -1,9 +1,11 @@
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 import httpx
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from .config import Settings
 from .errors import CrosslistError
@@ -11,6 +13,8 @@ from .models import ErrorResponse, HealthResponse, PreviewRequest, TransferPrevi
 from .platforms import AppleMusicClient, SpotifyClient
 from .service import build_spotify_to_apple_preview
 from .url_parser import spotify_playlist_id
+
+STATIC_DIR = Path(__file__).resolve().parent / "static"
 
 
 @asynccontextmanager
@@ -46,9 +50,18 @@ async def crosslist_error_handler(_: Request, exc: CrosslistError) -> JSONRespon
     )
 
 
+def _preview_page() -> FileResponse:
+    return FileResponse(STATIC_DIR / "index.html")
+
+
 @app.get("/", include_in_schema=False)
-async def root() -> dict[str, str]:
-    return {"name": "CROSSLIST", "status": "ready", "docs": "/docs"}
+async def root() -> FileResponse:
+    return _preview_page()
+
+
+@app.get("/preview", include_in_schema=False)
+async def preview() -> FileResponse:
+    return _preview_page()
 
 
 @app.get("/health", response_model=HealthResponse)
@@ -78,3 +91,6 @@ async def spotify_to_apple_preview(
         spotify=spotify,
         apple_music=apple_music,
     )
+
+
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")

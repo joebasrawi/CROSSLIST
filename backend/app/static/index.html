@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CROSSLIST — Spotify to Apple Music preview</title>
+    <meta
+      name="description"
+      content="Paste a public Spotify playlist to preview ordered Apple Music matches. No Apple login. Library writes stay on the iPhone app."
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="backdrop" aria-hidden="true"></div>
+    <main>
+      <header class="brand">
+        <div class="mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22">
+            <path
+              d="M4 14h14l-3.2-3.2 2.4-2.4L24 16l-6.8 7.6-2.4-2.4L18 18H4z"
+              fill="#111"
+            />
+            <path
+              d="M28 18H14l3.2 3.2-2.4 2.4L8 16l6.8-7.6 2.4 2.4L14 14h14z"
+              fill="#111"
+              opacity="0.42"
+            />
+          </svg>
+        </div>
+        <p class="wordmark">CROSSLIST</p>
+        <p class="route">SPOTIFY → APPLE MUSIC</p>
+      </header>
+
+      <section class="hero">
+        <h1>One link.<br />Same playlist.</h1>
+        <p>
+          Paste a public Spotify playlist. CROSSLIST matches it to the Apple
+          Music catalog in order — preview only, no Apple login.
+        </p>
+      </section>
+
+      <form id="preview-form" class="card" novalidate>
+        <label for="playlist-url">SPOTIFY PLAYLIST LINK</label>
+        <div class="field">
+          <span class="field-icon" aria-hidden="true">↗</span>
+          <input
+            id="playlist-url"
+            name="playlist_url"
+            type="url"
+            inputmode="url"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="https://open.spotify.com/playlist/…"
+            required
+          />
+        </div>
+
+        <div class="row">
+          <label class="storefront-label" for="storefront">STOREFRONT</label>
+          <select id="storefront" name="storefront">
+            <option value="us" selected>United States</option>
+            <option value="gb">United Kingdom</option>
+            <option value="ca">Canada</option>
+            <option value="au">Australia</option>
+            <option value="de">Germany</option>
+            <option value="fr">France</option>
+            <option value="jp">Japan</option>
+            <option value="br">Brazil</option>
+            <option value="mx">Mexico</option>
+            <option value="nl">Netherlands</option>
+            <option value="se">Sweden</option>
+            <option value="es">Spain</option>
+            <option value="it">Italy</option>
+          </select>
+        </div>
+
+        <button id="submit-button" type="submit">Find this playlist</button>
+        <p class="form-note">
+          Uses CROSSLIST’s existing Spotify and Apple Music catalog APIs. It
+          does not scrape Spotify or write to your Apple Music library.
+        </p>
+      </form>
+
+      <div id="error" class="error" hidden></div>
+      <section id="results" hidden></section>
+
+      <p class="privacy">
+        No Apple password, no Music permission in the browser. The iPhone app
+        remains the only path that creates playlists in your library.
+      </p>
+    </main>
+    <noscript>
+      <p>Turn on JavaScript to preview matches from the CROSSLIST API.</p>
+    </noscript>
+    <script src="/static/preview.js" defer></script>
+  </body>
+</html>

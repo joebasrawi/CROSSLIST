@@ -8,9 +8,21 @@ CROSSLIST turns a public Spotify playlist into a playlist in Apple Music without
 
 This repository contains the first production-shaped MVP: **Spotify → Apple Music**.
 
-The API is deployed at [crosslist-production-70f3.up.railway.app](https://crosslist-production-70f3.up.railway.app). Its health endpoint is public; live conversion remains credential-gated.
+The API is deployed at [crosslist-production-70f3.up.railway.app](https://crosslist-production-70f3.up.railway.app).
+
+The public match-preview page is the app root, also available at [`/preview`](https://crosslist-production-70f3.up.railway.app/preview). Anyone can paste a public Spotify playlist URL and see ordered Apple Music matches plus skipped or low-confidence tracks. There is no Apple login on the web page; the iPhone app remains the library-write path.
+
+If Spotify Development Mode blocks an arbitrary public playlist, or if Railway is missing platform secrets, the page surfaces the existing honest API error instead of inventing matches.
 
 ## Experience
+
+Public web preview (no Apple login):
+
+1. Open [the Railway app](https://crosslist-production-70f3.up.railway.app) or `/preview`.
+2. Paste a public Spotify playlist link, or share `/?url=` with a Spotify playlist URL.
+3. Review ordered Apple Music matches and skipped/low-confidence tracks.
+
+iPhone library write:
 
 1. Paste a public Spotify playlist link.
 2. Preview automatic Apple Music matches.
@@ -61,7 +73,7 @@ cp .env.example .env
 PYTHONPATH=. uvicorn app.main:app --reload
 ```
 
-The API will be available at `http://127.0.0.1:8000`, with interactive documentation at `/docs`.
+The public preview page will be available at `http://127.0.0.1:8000` (and `/preview`), with interactive API documentation at `/docs`.
 
 Run tests with:
 
